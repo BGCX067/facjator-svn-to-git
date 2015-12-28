@@ -1,0 +1,384 @@
+function abs(x)
+  if (x > 0) then
+    return x;
+  else
+    return -x;
+  end
+end
+
+function ear()
+
+main = Sphere();
+main:scale(0.57, 0.52, 0.2);
+main:translate(0, 0.4, 0);
+
+mainsub = Sphere();
+mainsub:scale(0.8, 0.8, 0.8);
+mainsub:scale(0.57, 0.62, 0.2);
+mainsub:translate(0, 0.33, 0.15);
+
+maind = Sphere();
+maind:scale(0.42, 0.7, 0.2);
+maind:rotateDeg(0, 0, -30);
+maind:translate(0, -0.14, 0);
+
+maindsub = Sphere();
+maindsub:scale(0.42, 0.8, 0.2);
+maindsub:rotateDeg(0, 0, -33);
+maindsub:translate(-0.1, -0.24, 0.2);
+
+hole = Sphere();
+hole:scale(0.22, 0.25, 0.11);
+hole:rotateDeg(0, 0, -11);
+hole:translate(-0.16, 0, 0);
+
+hole1 = Sphere();
+hole1:scale(0.14, 0.25, 0.11);
+hole1:rotateDeg(0, 0, 60);
+hole1:translate(-0.25, 0.12, 0.05);
+hole = Or(hole, hole1);
+
+hole2 = Sphere();
+hole2:scale(0.1, 0.2, 0.11);
+hole2:rotateDeg(0, 0, -50);
+hole2:translate(-0.25, -0.23, 0.05);
+hole = Or(hole, hole2);
+
+maind1 = PlaneProp(maind, 0.5, 0.13);
+maind1:p_rotateDeg(0, 180, 50);
+maind1:p_translate(0.4, -0.6, 0);
+
+edge = Torus(1, 0.12);
+edge:scale(0.5, 0.4, 0.38);
+edge:rotateDeg(93, 0, -4);
+edge:translate(0, 0.38, -0.0);
+
+ear = Or(main, maind1);
+ear = Diff(ear, mainsub);
+ear = Diff(ear, maindsub);
+ear = Diff(ear, hole);
+ear = Or(ear, edge);
+
+ear:scale(0.9, 1, 1);
+
+return ear;
+end
+
+function eye()
+  local pos  = params:getParamFloat("eye_lr");
+  local open = params:getParamFloat("eye_open");
+  local tmp1 = Sphere();
+  local tmp2 = Sphere();
+  local tmp3 = Sphere();
+  local tmp4 = Sphere();
+  local tmp5 = Sphere();
+
+  tmp1:scale(.95,.95,.95);
+  tmp2:scale(0.9,0.9,0.9);
+  tmp3:translate(0,1-open*0.4,0.8);
+  tmp3:scale(1-open*0.2,1-open*0.2, 1-open*0.2);
+  tmp4:scale(0.9, 0.9, 0.9);
+  tmp5:translate(pos*0.35, 0, 0.92 - abs(pos*0.045));
+  tmp5:scale(0.5, 0.5, 0.5);
+
+  local eyelid1 = Diff(tmp1, tmp2, tmp3);
+  local eyelid2 = Mirror(eyelid1, 1);
+
+  local eye = Or(eyelid1, eyelid2, tmp4, tmp5);
+
+  return eye;
+end
+
+function nose()
+  local bone = Sphere();
+  bone:scale(0.45, 1, 0.5);
+  bone:rotateDeg(-30, 0, 0);
+  bone:translate(0, 0.3, -0.1);
+
+  local bone_pl = PlaneProp(bone, 0.6, 0.2);
+  bone_pl:p_rotateDeg(0, 20, -30);
+  bone_pl:p_translate(-1, 0.2, 0.2);
+  local bone_pr = PlaneProp(bone_pl, 0.6, 0.2);
+  bone_pr:p_rotateDeg(0, 160, -30);
+  bone_pr:p_translate(1, 0.2, 0.2);
+  local bone_pf = PlaneProp(bone_pr, 0.6, 0.4);
+  bone_pf:p_rotateDeg(-45, 90, 0);
+  bone_pf:p_translate(0, 0.9, 0.4);
+
+  -- czubek
+  local tip = Sphere();
+  tip:translate(0, -0.4, 0.25);
+  tip:scale(0.45, 0.45, 0.45);
+
+  local side1 = Sphere();
+  side1:translate(-0.5, -0.45, -0.2);
+  side1:scale(0.4, 0.4, 0.4);
+
+  local side2 = Sphere();
+  side2:translate(0.5, -0.45, -0.2);
+  side2:scale(0.4, 0.4, 0.4);
+
+  local side = Or(side1, side2);
+
+  -- dziurki
+  local hole1 = Sphere();
+  hole1:translate(-1, -2.4, -0.3);
+  hole1:scale(0.22, 0.22, 0.22);
+
+  local hole2 = Sphere();
+  hole2:translate(1, -2.4, -0.3);
+  hole2:scale(0.22, 0.22, 0.22);
+
+  local holes = Or(hole1, hole2);
+  local _nose = Or(bone_pf, tip, side);
+        _nose = Diff(_nose, holes);
+
+  return _nose;
+end
+
+function mouth()
+  local tmp1 = Sphere();
+  local tmp2 = Sphere();
+  local tmp3 = Sphere();
+  local tmp4 = Sphere();
+  local tmp5 = Sphere();
+  local tmp6 = Sphere();
+
+  tmp1:scale(1.2, 1, 1);
+  tmp1:translate(0, .5, 0);
+  tmp2:scale(2.5, 2, 2.5);
+  tmp2:translate(0, -1, 0);
+  tmp3:scale(1, 0.5, 1);
+  tmp3:translate(0, -.55, -.15);
+  tmp5:scale(0.8, 0.8, 0.8);
+  tmp5:translate(0.4, 0, 0);
+  tmp6:scale(0.8, 0.8, 0.8);
+  tmp6:translate(-0.4, 0, 0);
+
+  local tmp7 = Diff(tmp4, tmp5, tmp6);
+  tmp7:translate(0,-0.42, 0);
+
+  local tmp8 = And(tmp1, tmp2, tmp3);
+  tmp8:scale(1, 1, .5);
+  tmp8:translate(0, 0.1, 0);
+
+  local tmp9 = Mirror(tmp8, 1);
+  tmp9:scale(1, 1.05, 1);
+
+  local tmp10 = Xor(tmp8, tmp9);
+  local _mouth = Diff(tmp10, tmp7);
+
+  return _mouth;
+end
+
+function eye_hole()
+  local tmp = Sphere();
+  tmp:scale(0.2, 0.2, 0.2);
+  tmp:translate(-0.7, 0.5, 3.7);
+
+  return tmp;
+end
+
+function neck()
+  local tmp = Cylinder();
+--  tmp:translate(0, -0.7, 0);
+  tmp:scale(0.52, 0.7, 0.43);
+  tmp:rotateDeg(22, 0, 0);
+--  tmp:translate(0, 0, -0.34);
+  local pp = PlaneProp(tmp, 0.5, 0.1);
+  pp:p_rotateDeg(0, -90, 0);
+  pp:p_translate(0, 0, -0.7);
+  local a = Sphere();
+  a:scale(0.06, 0.06, 0.06);
+  a:translate(0, 0, -0.7);
+  return pp;
+end
+
+function head_structure()
+  local s_skull = Sphere();
+  s_skull:scale(0.65, 1.15, 0.76);
+
+  local chin = Torus(1, 0.4);
+  chin:scale(0.45, 1, 0.9);
+  chin:rotateDeg(45, 0, 0);
+  chin:translate(0, 0.2, 0);
+  chin:scale(1, 1.3, 0.7);
+  local chin_cut = Plane();
+  chin_cut:rotateDeg(0, -90, -30);
+  chin = Diff(chin, chin_cut);
+  
+  s_skull = Or(s_skull, chin);
+
+--  s_skull:translate(0, 0.2, 0);
+  local pl = PlaneProp(s_skull, 0.25, 0.3);
+  pl:p_rotateDeg(0, 10, 0);
+  pl:p_translate(-0.75, 0, 0);
+  local pr = PlaneProp(pl, 0.25, 0.3);
+  pr:p_rotateDeg(0, 170, 0);
+  pr:p_translate(0.75, 0, 0);
+  local pt = PlaneProp(pr, 0.6, 0.4);
+  pt:p_rotateDeg(0, 0, -90);
+  pt:p_translate(0, 1.1, 0);
+  local pb = PlaneProp(pt, 1, 0.25);
+  pb:p_rotateDeg(0, 0, 90);
+  pb:p_translate(0, -1.2, 0);
+  local pf = PlaneProp(pb, 1, 0.2);
+  pf:p_rotateDeg(0, 90, -10);
+  pf:p_translate(0, 0, 1.2);
+
+  local pb1 = PlaneProp(pf, 0.5, 0.2);
+  pb1:p_rotateDeg(30, 0, 90);
+  pb1:p_translate(0, -1.2, 0);
+
+  local pl1 = PlaneProp(pb1, 0.5, 0.12);
+  pl1:p_rotateDeg(0, 20, 30);
+  pl1:p_translate(-0.6, -0.5, 0.55);
+  local pr1 = PlaneProp(pl1, 0.5, 0.1);
+  pr1:p_rotateDeg(0, 160, 30);
+  pr1:p_translate(0.6, -0.5, 0.6);
+
+  --wglebienie na oczy
+  local eyes = Torus(2, 0.3);
+  eyes:scale(0.44, 0.56, 0.49);
+  eyes:translate(0, 0.07, -0.29);
+  --wyciecie z wglebienia, bez srodka
+  local e1 = Sphere();
+  e1:scale(0.5, 0.5, 0.5);
+  e1:translate(0.52, 0.1, 0.7);
+  local e2 = Sphere();
+  e2:scale(0.5, 0.5, 0.5);
+  e2:translate(-0.52, 0.1, 0.7);
+  local eyesr = Diff(eyes, e1);
+  local eyesl = Diff(eyes, e2);
+
+  local tc = Cube()
+  tc:scale(1, 0.23, 0.3);
+  tc:translate(0, 0.08, 0.29);
+  tc1 = Diff(tc, e1);
+  tc2 = Diff(tc1, e2);
+  --local eyes1 = Torus(2, 0.3);
+  --eyes1:scale(0.44, 0.6, 0.49);
+  --eyes1:translate(0, 0.10, -0.26);
+  --local eyesSub = Or(eyes, eyes1);
+
+  local faced = Sphere()
+  faced:scale(0.6, 1, 0.65)
+  faced:translate(0, -0.3, 0.04);
+  local fp = PlaneProp(faced, 0.6, 0.4);
+  fp:p_rotateDeg(0, 90, 0);
+  fp:p_translate(0, 0, 1);
+  local c = Cube();
+  c:scale(0.58, 0.6, 0.3);
+  c:translate(0, -0.55, 0.45);
+  local cutOut = Diff(And(pr1, c), fp)
+
+  local all = Diff(pr1, cutOut);
+
+  local a = Sphere();
+  a:scale(0.06, 0.06, 0.06);
+  a:translate(-0.55, -0.2, 0.55)
+
+  eyesboth = Or(eyesr, eyesl);
+  eyes1 = Diff(eyes, tc2);
+  all = Diff(all, eyes1);
+
+  --all = Or(all, tc);
+  return all;
+end
+
+
+local nose_sx = params:getParamFloat("nose_sx");
+local nose_sy = params:getParamFloat("nose_sy");
+local nose_sz = params:getParamFloat("nose_sz");
+local nose_ty = params:getParamFloat("nose_ty");
+local nose_tz = params:getParamFloat("nose_tz");
+
+local eye_scale = params:getParamFloat("eye_scale");
+local eye_tx = params:getParamFloat("eye_tx");
+local eye_ty = params:getParamFloat("eye_ty");
+local eye_tz = params:getParamFloat("eye_tz");
+
+local mouth_sx = params:getParamFloat("mouth_sx");
+local mouth_sy = params:getParamFloat("mouth_sy");
+local mouth_sz = params:getParamFloat("mouth_sz");
+local mouth_ty = params:getParamFloat("mouth_ty");
+local mouth_tz = params:getParamFloat("mouth_tz");
+
+local eye_hole_l = eye_hole();
+local eye_hole_r = Mirror(eye_hole_l, 0);
+
+local HeadStructure = head_structure();
+local Neck = neck();
+Neck:translate(0, -1.0, -0.42);
+local EarR = ear();
+local earSize = 0.25;
+EarR:scale(earSize, earSize, earSize);
+EarR:rotateDeg(0, 80, 0);
+EarR:translate(0.6, -0.09, -0.17);
+local EarL = Mirror(EarR, 0);
+
+local Nose = nose();
+Nose:translate(0, nose_ty, nose_tz);
+Nose:scale(nose_sx, nose_sy, nose_sz);
+
+local Mouth = mouth();
+Mouth:translate(0, mouth_ty, mouth_tz);
+Mouth:scale(mouth_sx, mouth_sy, mouth_sz);
+
+local EyeL = eye();
+EyeL:translate(eye_tx, eye_ty, eye_tz);
+EyeL:scale(eye_scale, eye_scale, eye_scale);
+local EyeR = Mirror(EyeL, 0);
+
+local Head = Or(Neck, HeadStructure);
+--Head = mouth();
+--Head:scale(0.6, 0.6, 0.6)
+Head = Or(Head, EarR);
+Head = Or(Head, EarL);
+Head = Or(Head, Nose);
+Head = Or(Head, Mouth);
+Head = Or(Head, EyeL);
+Head = Or(Head, EyeR);
+
+--[[
+local head = Diff(head_structure(), eye_hole_l, eye_hole_r);
+local head_neck = Or(head, neck());
+
+local eye_l = eye();
+eye_l:scale(eye_scale, eye_scale, eye_scale);
+eye_l:translate(eye_tx, eye_ty, eye_tz);
+local eye_r = Mirror(eye_l, 0);
+
+local eyes = Or(eye_l, eye_r);
+
+local nose = nose();
+nose:scale(nose_sx, nose_sy, nose_sz);
+-- 0, nose_ty, nose_tz
+nose:translate(0, nose_ty, nose_tz);
+
+local mouth = mouth();
+mouth:scale(mouth_sx, mouth_sy, mouth_sz);
+mouth:translate(0, mouth_ty, mouth_tz);
+
+local head_all = Or(head_neck, eyes, nose, mouth);
+--draw(Or(head_structure(), neck()));
+--]]
+draw(Head);
+
+/*EOS*/
+eye_lr;2;0
+eye_open;2;1
+nose_sx;2;0.2
+nose_sy;2;0.26
+nose_sz;2;0.145
+nose_ty;2;-0.75
+nose_tz;2;4.25
+eye_scale;2;0.12
+eye_tx;2;-1.75
+eye_ty;2;0.6
+eye_tz;2;3.8
+mouth_sx;2;0.25
+mouth_sy;2;0.2
+mouth_sz;2;0.15
+mouth_ty;2;-2.3
+mouth_tz;2;3.66

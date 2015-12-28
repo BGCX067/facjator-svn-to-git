@@ -1,0 +1,96 @@
+\section{Krótkie wprowadzenie do Lua}
+Rozdział zawiera wprowadzenie do programowania w języku Lua, który jest
+wykorzystywany do tworzenia gramatyki kształtu w programie \emph{Facjator}.
+Opisane są tylko najbardziej elementarne elementy języka, więcej informacji
+można uzyskać z dokumentacji\footnote{http://www.lua.org/docs.html}.
+
+Do przechowywania tymczasowych wartości służą w Lua zmienne, które mogą mieć
+zasięg globalny lub lokalny. Zmienne nie mają przypisanego typu, a typ powiązany
+ze zmienną jest determinowany przez aktualnie przechowywaną wartość.
+Dopuszczalne wartości mogą reprezentować:
+\begin{enumerate}
+  \item \emph{nil} czyli brak wartości, pusta zmienna;
+  \item liczby całkowite, zmiennoprzecinkowe;
+  \item ciągi znaków (\emph{stringi});
+  \item wartość logiczną \emph{true} lub \emph{false};
+  \item funkcje;
+  \item tablice.
+\end{enumerate}
+Definiowanie nowej zmiennej polega na zwykłym przypisaniu wartości,
+jeżeli zmienna o podanej nazwie już istniała to zostaje nadpisana. Do
+definiowania zmiennej lokalnej używa się słowa kluczowego \emph{local}. Nazwa
+zmiennej musi zaczynać się od litery lub podkreślenia, dalsza część może składać
+się jedynie z liter, cyfr oraz podkreślenia, jako nazw nie można używać słów
+kluczowych. Przy korzystaniu ze zmiennych należy pamiętać, że wielkość liter ma
+znaczenie.
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+zmienna = 5
+moj_string = "Praca dyplomowa"
+local zmienna_lokalna = true
+\end{lstlisting}
+}
+
+Do warunkowego wykonywania części gramatyki można wykorzystać instrukcję
+warunkową \emph{if}. Instrukcja sprawdza warunek i jeżeli jest on spełniony to
+wykonuje się ujęty nią fagment kodu. Można wykorzystać wersję uwzględniającą
+warunek \emph{else}.
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+if zmienna < 5 then
+  [...]
+elseif zmienna == 5 then
+  [...]
+else
+  [...]
+end
+\end{lstlisting}
+}
+Warunki można sprawdzać operatorami: równości (==), nierówności (~= lub !=),
+mniejszości (<), większości (>), mniejszy lub równy (<=), większy lub równy
+(>=).
+
+Do wielokrotnego wykonywania tego samego fragmentu kodu można wykorzystać pętle,
+które mogą przyjmować jedną z poniższych form:
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+for nazwa_zmiennej = poczatek,koniec do instrukcje end
+\end{lstlisting}
+}
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+repeat instrukcje until warunek
+\end{lstlisting}
+}
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+while warunek do instrukcje end
+\end{lstlisting}
+}
+
+
+Podczas tworzenia rozbudowanego kodu przydatne może okazać się grupowanie jego
+części w logicznie fragmenty. Do tego celu wykorzystać można funkcje.
+Definicja funkcji składa się ze słowa kluczowego \emph{function}, nazwy, listy
+parametrów ujętych w nawiasy, treści funkcji oraz słowa kluczowego \emph{end}.
+Jeżeli funkcja ma zwracać wartość to należy użyć słowa kluczowego \emph{return}.
+W funkcji można definiować zmienne lokalne oznaczając ją jako \emph{local}.
+
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+function toCelsius(input)
+  -- zmienna lokalna, niewidoczna poza funkcja
+  local ret = (input - 32) * (5 / 9) 
+  return ret --zwraamy wartosc
+end
+
+-- wywolanie funkcji
+tempCelsius = toCelsius(45)
+\end{lstlisting}
+}

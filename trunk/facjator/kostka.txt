@@ -1,0 +1,50 @@
+local border = params:getParamFloat("border");
+local size   = params:getParamFloat("size");
+
+local b = Cube();
+local c1 = Cylinder();
+local c2 = Cylinder();
+local c3 = Cylinder();
+b:scale(0.8, 0.8, 0.8);
+
+c1:scale(1.1-border*0.2, 1.1-border*0.2, 1.1-border*0.2);
+c2:scale(1.1-border*0.2, 1.1-border*0.2, 1.1-border*0.2);
+c3:scale(1.1-border*0.2, 1.1-border*0.2, 1.1-border*0.2);
+
+c2:rotateDeg(90, 0, 0);
+c3:rotateDeg(0, 0, 90);
+
+local box = And(b, c1, c2, c3);
+
+local p1 = Sphere();
+local p2 = Sphere();
+local p3 = Sphere();
+local p4 = Sphere();
+local p5 = Sphere();
+local p6 = Sphere();
+
+p1:scale(0.1, 0.1, 0.1);
+p2:scale(0.1, 0.1, 0.1);
+p3:scale(0.1, 0.1, 0.1);
+p4:scale(0.1, 0.1, 0.1);
+p5:scale(0.1, 0.1, 0.1);
+p6:scale(0.1, 0.1, 0.1);
+
+p1:translate(0, 0, 8);
+
+p2:translate(8, 4, 4);
+p3:translate(8,-4,-4);
+
+p4:translate(0, 8, 0);
+p5:translate(4, 8, 4);
+p6:translate(-4,8,-4);
+
+local cube1 = Diff(box, p1, p2, p3);
+local cube = Diff(cube1, p4, p5, p6);
+
+cube:scale(size, size, size);
+
+draw(cube);
+/*EOS*/
+border;2;0.1
+size;2;0.8

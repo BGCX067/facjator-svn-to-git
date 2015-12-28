@@ -1,0 +1,691 @@
+# depslib dependency file v1.0
+1276724977 source:/home/tomek/workspace_blocks/face/main.cpp
+	"ui/window.h"
+	"face.h"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl.H
+	"Enumerations.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Enumerations.H
+	"Fl_Export.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Export.H
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Window.H
+	"Fl_Group.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Group.H
+	"Fl_Widget.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Widget.H
+	"Enumerations.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Box.H
+	"Fl_Widget.H"
+
+1274717056 /home/tomek/workspace_blocks/face/window.h
+	<FL/Fl_Window.H>
+	"cmenu.h"
+	"FLTKWindow.hpp"
+	"cpic.h"
+	"cmap.h"
+	"ctext.h"
+	<FL/Fl_Button.H>
+
+1269808256 /home/tomek/workspace_blocks/face/cmenu.h
+	<FL/Fl_Menu_Bar.H>
+	<FL/Fl_Widget.H>
+
+1269808256 /home/tomek/workspace_blocks/face/cbox3d.h
+	<FL/Fl_Gl_Window.H>
+
+1269808256 /home/tomek/workspace_blocks/face/cpic.h
+	<Fl/Fl_Widget.H>
+	<FL/Fl_JPEG_Image.H>
+	<FL/Fl_Image.H>
+
+1269808256 source:/home/tomek/workspace_blocks/face/cbox3d.cpp
+	"cbox3d.h"
+	<windows.h>
+	<GL/gl.h>
+	<FL/Fl_Gl_Window.H>
+	<iostream>
+
+1274717218 source:/home/tomek/workspace_blocks/face/cmenu.cpp
+	"cmenu.h"
+	<iostream>
+	"window.h"
+
+1269808256 source:/home/tomek/workspace_blocks/face/cpic.cpp
+	"cpic.h"
+	<iostream>
+	<FL/Fl_File_Chooser.H>
+	<FL/fl_draw.H>
+
+1274722165 source:/home/tomek/workspace_blocks/face/window.cpp
+	"window.h"
+	<iostream>
+	"face.h"
+
+1264431610 /usr/include/fltk-1.1/FL/Fl_Gl_Window.h
+	"Fl_Window.H"
+
+1264431610 /usr/include/fltk-1.1/FL/Fl_Menu_Bar.h
+	"Fl_Menu_.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Menu_.H
+	"Fl_Widget.H"
+	"Fl_Menu_Item.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Menu_Item.H
+	"Fl_Widget.H"
+	"Fl_Image.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Image.H
+	"Enumerations.H"
+
+1264431610 /usr/include/fltk-1.1/FL/Fl_Widget.h
+	"Enumerations.H"
+
+1264431610 /usr/include/fltk-1.1/FL/Fl_Window.h
+	"Fl_Group.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl.h
+	"Enumerations.H"
+
+1264431610 /usr/include/fltk-1.1/Fl/Fl_Widget.h
+	"Enumerations.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Enumerations.H
+	"Fl_Export.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Export.H
+
+1250954028 /usr/include/fltk-1.1/Fl/Fl_Image.h
+	"Enumerations.H"
+
+1264431609 /usr/include/fltk-1.1/FL/Fl_File_Chooser.h
+	<FL/Fl.H>
+	<FL/Fl_Double_Window.H>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<FL/Fl_Group.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Preferences.H>
+	<FL/Fl_Tile.H>
+	<FL/Fl_File_Browser.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_File_Input.H>
+	<FL/Fl_Return_Button.H>
+	<FL/fl_ask.H>
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Double_Window.H
+	"Fl_Window.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Choice.H
+	"Fl_Menu_.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Menu_Button.H
+	"Fl_Menu_.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Button.H
+	"Fl_Widget.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Preferences.H
+	<windows.h>
+	<stdio.h>
+	"Fl_Export.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Tile.H
+	"Fl_Group.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_File_Browser.H
+	"Fl_Browser.H"
+	"Fl_File_Icon.H"
+	"filename.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Browser.H
+	"Fl_Browser_.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Browser_.H
+	"Fl_Group.H"
+	"Fl_Scrollbar.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Scrollbar.H
+	"Fl_Slider.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Slider.H
+	"Fl_Valuator.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Valuator.H
+	"Fl_Widget.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_File_Icon.H
+	"Fl.H"
+
+1277857907 /usr/include/fltk-1.1/FL/filename.H
+	"Fl_Export.H"
+	<sys/types.h>
+	"/usr/include/dirent.h"
+	<sys/types.h>
+	<direct.h>
+	<sys/types.h>
+	<dirent.h>
+
+1282720978 /usr/include/dirent.h
+	<features.h>
+	<bits/types.h>
+	<bits/dirent.h>
+	<bits/types.h>
+	<bits/posix1_lim.h>
+	<stddef.h>
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Check_Button.H
+	"Fl_Light_Button.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Light_Button.H
+	"Fl_Button.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_File_Input.H
+	<FL/Fl_Input.H>
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Input.H
+	"Fl_Input_.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Input_.H
+	"Fl_Widget.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Return_Button.H
+	"Fl_Button.H"
+
+1277857907 /usr/include/fltk-1.1/FL/fl_ask.H
+	"Enumerations.H"
+
+1264431610 /usr/include/fltk-1.1/FL/Fl_JPEG_Image.h
+	"Fl_Image.H"
+
+1250954028 /usr/include/fltk-1.1/Fl/Fl_Box.h
+	"Fl_Widget.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Widget.H
+	"Enumerations.H"
+
+1264431610 /usr/include/fltk-1.1/FL/Fl_Shared_Image.h
+	"Fl_Image.H"
+
+1264431610 /usr/include/fltk-1.1/FL/Fl_Image.h
+	"Enumerations.H"
+
+1264431609 /usr/include/fltk-1.1/FL/fl_draw.h
+	"Enumerations.H"
+
+1269808256 source:/home/tomek/workspace_blocks/face/cmap.cpp
+	"cmap.h"
+	<iostream>
+	<FL/Fl_File_Chooser.H>
+	<FL/fl_draw.H>
+
+1269808256 /home/tomek/workspace_blocks/face/cmap.h
+	<Fl/Fl_Widget.H>
+	<FL/Fl_JPEG_Image.H>
+
+1269694080 source:/home/tomek/workspace_blocks/face/cgwin.cpp
+	"cgwin.h"
+	<windows.h>
+	<GL/gl.h>
+	<FL/Fl_Gl_Window.H>
+	<iostream>
+	"FLTKWindow.hpp"
+
+1269808256 /home/tomek/workspace_blocks/face/cgwin.h
+	<FL/Fl_Gl_Window.H>
+	<vl/VisualizationLibrary.hpp>
+	<vl/Image.hpp>
+	<vl/Transform.hpp>
+	<vl/Rendering.hpp>
+	<vlVolume/MarchingCubes.hpp>
+	<vl/SceneManagerActorTree.hpp>
+
+1274740457 source:/home/tomek/workspace_blocks/face/FLTKWindow.cpp
+	"FLTKWindow.hpp"
+	<windows.h>
+	<vl/OpenGL.hpp>
+	<vl/VisualizationLibrary.hpp>
+	<vl/Log.hpp>
+	<vl/Say.hpp>
+	<vlut/Applet.hpp>
+	"mcube.hpp"
+	<algorithm>
+	<map>
+
+1274738989 /home/tomek/workspace_blocks/face/FLTKWindow.hpp
+	<vl/OpenGLContext.hpp>
+	<vl/String.hpp>
+	<vl/Vector4.hpp>
+	<FL/Fl.H>
+	<FL/Fl_Gl_Window.H>
+	"grammar/terminal.hpp"
+
+1269689037 /home/tomek/workspace_blocks/face/App_RotatingCube.hpp
+	"vlut/Applet.hpp"
+	"vlut/GeometryPrimitives.hpp"
+	"vl/SceneManagerActorTree.hpp"
+	"vl/Actor.hpp"
+	"vl/Effect.hpp"
+	"vl/Time.hpp"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Menu_Bar.H
+	"Fl_Menu_.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Gl_Window.H
+	"Fl_Window.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_JPEG_Image.H
+	"Fl_Image.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_File_Chooser.H
+	<FL/Fl.H>
+	<FL/Fl_Double_Window.H>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<FL/Fl_Group.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Preferences.H>
+	<FL/Fl_Tile.H>
+	<FL/Fl_File_Browser.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_File_Input.H>
+	<FL/Fl_Return_Button.H>
+	<FL/fl_ask.H>
+
+1277857907 /usr/include/fltk-1.1/FL/fl_draw.H
+	"Enumerations.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Shared_Image.H
+	"Fl_Image.H"
+
+1269880739 /home/tomek/workspace_blocks/face/App_MarchingCubes.hpp
+	<vl/VisualizationLibrary.hpp>
+	<vl/FileSystem.hpp>
+	<vl/DiskDirectory.hpp>
+	<vl/ResourceDatabase.hpp>
+	<vl/LoadWriterManager.hpp>
+	<vl/vl3DS.hpp>
+	<vl/vlPLY.hpp>
+	<vl/vlOBJ.hpp>
+	<vl/vlAC3D.hpp>
+	<vl/TriangleStripGenerator.hpp>
+	<vl/DoubleVertexRemover.hpp>
+	<vl/DepthSortCallback.hpp>
+	<vl/FontManager.hpp>
+	<vl/GeometryLoadCallback.hpp>
+	<vlVolume/MarchingCubes.hpp>
+	<vlVolume/VolumePlot.hpp>
+	"BaseDemo.hpp"
+
+1269880739 /home/tomek/workspace_blocks/face/BaseDemo.hpp
+	"vl/ReadPixels.hpp"
+	"vl/Time.hpp"
+	"vl/FontManager.hpp"
+	"vl/Geometry.hpp"
+	"vlut/Applet.hpp"
+	"vlut/GeometryPrimitives.hpp"
+
+1278152260 /home/tomek/workspace_blocks/face/mcube.hpp
+	<iostream>
+	<vl/VisualizationLibrary.hpp>
+	<vlut/Applet.hpp>
+	<vlut/GeometryPrimitives.hpp>
+	<vl/SceneManagerActorTree.hpp>
+	<vl/Actor.hpp>
+	<vl/DrawPixels.hpp>
+	<vl/Effect.hpp>
+	<vlVolume/MarchingCubes.hpp>
+	<vl/Light.hpp>
+	"face.h"
+
+1273237274 source:/home/tomek/workspace_blocks/face/terminal.cpp
+	"terminal.hpp"
+
+1273238177 /home/tomek/workspace_blocks/face/terminal.hpp
+	<vector>
+	"math/vector.hpp"
+
+1274373748 /home/tomek/workspace_blocks/face/math/vector.hpp
+	<iostream>
+	<cassert>
+	<cmath>
+
+1273237678 /home/tomek/workspace_blocks/face/math/vec_func.hpp
+	"vector.hpp"
+
+1274376929 source:/home/tomek/workspace_blocks/face/math/tolua_vector.cpp
+	"stdlib.h"
+	"string.h"
+	"tolua++.h"
+	"vector.hpp"
+
+1274373748 source:/home/tomek/workspace_blocks/face/math/vector.cpp
+	"vector.hpp"
+
+1282766460 source:/home/tomek/workspace_blocks/face/grammar/terminal.cpp
+	<cmath>
+	"terminal.hpp"
+	"../defs.h"
+	"../face.h"
+	"vl/GLSLmath.hpp"
+
+1282766460 /home/tomek/workspace_blocks/face/grammar/terminal.hpp
+	<vector>
+	<list>
+	<utility>
+	<algorithm>
+	"vl/Vector3.hpp"
+	"vl/Matrix4.hpp"
+	"../math/vector.hpp"
+	<boost/shared_ptr.hpp>
+	<boost/weak_ptr.hpp>
+
+1281265813 source:/home/tomek/workspace_blocks/face/grammar/tolua_terminal.cpp
+	"stdlib.h"
+	"string.h"
+	"tolua++.h"
+	"terminal.hpp"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Text_Display.H
+	"fl_draw.H"
+	"Fl_Group.H"
+	"Fl_Widget.H"
+	"Fl_Scrollbar.H"
+	"Fl_Text_Buffer.H"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Text_Buffer.H
+	"Fl_Export.H"
+
+1274373749 /home/tomek/workspace_blocks/face/defs.h
+
+1274717713 /home/tomek/workspace_blocks/face/ctext.h
+	<FL/Fl_Text_Editor.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
+	<vector>
+	<string>
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Text_Editor.H
+	"Fl_Text_Display.H"
+
+1274998111 source:/home/tomek/workspace_blocks/face/ctext.cpp
+	"ctext.h"
+	<iostream>
+	<cstring>
+	<cstdlib>
+	<FL/Fl.H>
+	<FL/Fl_Menu_Item.H>
+
+1274376869 /home/tomek/workspace_blocks/face/math/tolua_vector.hpp
+
+1281265773 /home/tomek/workspace_blocks/face/grammar/tolua_terminal.hpp
+
+1278150573 source:/home/tomek/workspace_blocks/face/face.cpp
+	"face.h"
+	<FL/Fl.H>
+	<FL/Fl_Shared_Image.H>
+	<vl/VisualizationLibrary.hpp>
+	<iostream>
+
+1278150564 /home/tomek/workspace_blocks/face/face.h
+	<string>
+	<vl/VisualizationLibrary.hpp>
+	<vl/Image.hpp>
+
+1276724977 source:/home/tomek/workspace_blocks/face/Project.cpp
+	"Project.hpp"
+	<iostream>
+	<fstream>
+	<sstream>
+	"Windows.hpp"
+	"ui/ctext.h"
+	"grammar/Script.hpp"
+	"grammar/Grammar.hpp"
+
+1276724977 /home/tomek/workspace_blocks/face/Project.hpp
+	<string>
+
+1276724977 /home/tomek/workspace_blocks/face/Windows.hpp
+
+1281123066 /home/tomek/workspace_blocks/face/ui/ctext.h
+	<FL/Fl_Text_Editor.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
+	<vector>
+	<string>
+
+1276724976 /home/tomek/workspace_blocks/face/grammar/Script.hpp
+	<string>
+
+1276724976 /home/tomek/workspace_blocks/face/grammar/Grammar.hpp
+	<string>
+	<vector>
+	"IGrammarEventListener.hpp"
+
+1276724976 /home/tomek/workspace_blocks/face/grammar/IGrammarEventListener.hpp
+
+1276724977 source:/home/tomek/workspace_blocks/face/Windows.cpp
+	"Windows.hpp"
+
+1278068450 source:/home/tomek/workspace_blocks/face/grammar/ActionLog.cpp
+	"ActionLog.hpp"
+	"../Project.hpp"
+
+1276724976 /home/tomek/workspace_blocks/face/grammar/ActionLog.hpp
+	<string>
+	<vector>
+	"terminal.hpp"
+
+1276725516 source:/home/tomek/workspace_blocks/face/grammar/Grammar.cpp
+	<algorithm>
+	"Grammar.hpp"
+	"GrammarParam.hpp"
+	"GrammarOutput.hpp"
+	"LuaScript.hpp"
+	"Operation.hpp"
+
+1276724976 /home/tomek/workspace_blocks/face/grammar/GrammarParam.hpp
+	<string>
+
+1276724976 /home/tomek/workspace_blocks/face/grammar/GrammarOutput.hpp
+	"ActionLog.hpp"
+
+1276724976 /home/tomek/workspace_blocks/face/grammar/LuaScript.hpp
+	<lua.h>
+	"Script.hpp"
+
+1278069841 /home/tomek/workspace_blocks/face/grammar/Operation.hpp
+	<string>
+
+1276724976 source:/home/tomek/workspace_blocks/face/grammar/GrammarOutput.cpp
+	"GrammarOutput.hpp"
+
+1276724976 source:/home/tomek/workspace_blocks/face/grammar/GrammarParam.cpp
+	<sstream>
+	"GrammarParam.hpp"
+
+1276724976 source:/home/tomek/workspace_blocks/face/grammar/LuaScript.cpp
+	<iostream>
+	<lualib.h>
+	<tolua++.h>
+	"../math/tolua_vector.hpp"
+	"tolua_terminal.hpp"
+	"LuaScript.hpp"
+
+1278068573 source:/home/tomek/workspace_blocks/face/grammar/Operation.cpp
+	"Operation.hpp"
+	"Grammar.hpp"
+	"GrammarOutput.hpp"
+	"ActionLog.hpp"
+	"GrammarParam.hpp"
+	"terminal.hpp"
+
+1276724976 source:/home/tomek/workspace_blocks/face/grammar/Script.cpp
+	"Script.hpp"
+
+1281265773 source:/home/tomek/workspace_blocks/face/grammar/tolua_operation.cpp
+	"stdlib.h"
+	"string.h"
+	"tolua++.h"
+	"Operation.hpp"
+
+1282766502 /home/tomek/workspace_blocks/face/ui/window.h
+	<FL/Fl_Window.H>
+	"cmenu.h"
+	"FLTKWindow.hpp"
+	"cpic.h"
+	"cmap.h"
+
+1276724977 /home/tomek/workspace_blocks/face/ui/cmenu.h
+	<FL/Fl_Menu_Bar.H>
+	<FL/Fl_Widget.H>
+
+1278150144 /home/tomek/workspace_blocks/face/ui/FLTKWindow.hpp
+	<vl/OpenGLContext.hpp>
+	<vl/String.hpp>
+	<vl/Vector4.hpp>
+	<FL/Fl.H>
+	<FL/Fl_Gl_Window.H>
+	"../grammar/terminal.hpp"
+
+1276724977 /home/tomek/workspace_blocks/face/ui/cpic.h
+	<Fl/Fl_Widget.H>
+	<FL/Fl_JPEG_Image.H>
+	<FL/Fl_Image.H>
+
+1276724977 /home/tomek/workspace_blocks/face/ui/cmap.h
+	<Fl/Fl_Widget.H>
+	<FL/Fl_JPEG_Image.H>
+
+1281180539 source:/home/tomek/workspace_blocks/face/ui/FLTKWindow.cpp
+	"FLTKWindow.hpp"
+	<windows.h>
+	<vl/OpenGL.hpp>
+	<vl/VisualizationLibrary.hpp>
+	<vl/Log.hpp>
+	<vl/Say.hpp>
+	<vlut/Applet.hpp>
+	"../mcube.hpp"
+	<algorithm>
+	<map>
+
+1276726131 source:/home/tomek/workspace_blocks/face/ui/ceditparam.cpp
+	<FL/Fl_Button.H>
+	<FL/Fl_Hold_Browser.H>
+	<Fl/Fl_Choice.H>
+	<Fl/Fl_Menu_Item.H>
+	<Fl/Fl_Input.H>
+	<Fl/fl_ask.H>
+	<cstring>
+	<cstdlib>
+	"ceditparam.h"
+	"../Project.hpp"
+	"../grammar/Grammar.hpp"
+	"../grammar/GrammarParam.hpp"
+
+1277857907 /usr/include/fltk-1.1/FL/Fl_Hold_Browser.H
+	"Fl_Browser.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Choice.H
+	"Fl_Menu_.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Menu_.H
+	"Fl_Widget.H"
+	"Fl_Menu_Item.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Menu_Item.H
+	"Fl_Widget.H"
+	"Fl_Image.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Image.H
+	"Enumerations.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Input.H
+	"Fl_Input_.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Input_.H
+	"Fl_Widget.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/fl_ask.H
+	"Enumerations.H"
+
+1276724977 /home/tomek/workspace_blocks/face/ui/ceditparam.h
+	<Fl/Fl_Window.H>
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Window.H
+	"Fl_Group.H"
+
+1277857907 /usr/include/fltk-1.1/Fl/Fl_Group.H
+	"Fl_Widget.H"
+
+1276724977 source:/home/tomek/workspace_blocks/face/ui/cmap.cpp
+	"cmap.h"
+	<iostream>
+	<FL/Fl_File_Chooser.H>
+	<FL/fl_draw.H>
+
+1280565558 source:/home/tomek/workspace_blocks/face/ui/cmenu.cpp
+	"cmenu.h"
+	<iostream>
+	<string>
+	<FL/Fl_File_Chooser.H>
+	"window.h"
+	"../Project.hpp"
+	"ctext.h"
+
+1276724977 source:/home/tomek/workspace_blocks/face/ui/cparams.cpp
+	<FL/Fl.h>
+	<FL/Fl_Button.H>
+	<FL/Fl_Hold_Browser.H>
+	"cparams.h"
+	"ceditparam.h"
+	"../Project.hpp"
+	"../Windows.hpp"
+	"../grammar/Grammar.hpp"
+	"../grammar/GrammarParam.hpp"
+
+1276724977 /home/tomek/workspace_blocks/face/ui/cparams.h
+	<Fl/Fl_Window.H>
+
+1276724977 source:/home/tomek/workspace_blocks/face/ui/cpic.cpp
+	"cpic.h"
+	<iostream>
+	<FL/Fl_File_Chooser.H>
+	<FL/fl_draw.H>
+
+1282766502 source:/home/tomek/workspace_blocks/face/ui/ctext.cpp
+	"ctext.h"
+	<iostream>
+	<cstring>
+	<cstdlib>
+	<FL/Fl.H>
+	<FL/Fl_Menu_Item.H>
+
+1282766502 source:/home/tomek/workspace_blocks/face/ui/window.cpp
+	"window.h"
+	<iostream>
+	<ctime>
+	"../face.h"
+	"../Project.hpp"
+	"../Windows.hpp"
+	"../grammar/Script.hpp"
+	"../grammar/Grammar.hpp"
+	"ctext.h"
+	"cparams.h"
+	<FL/Fl_Button.H>
+	<Fl/Fl_Input.H>
+

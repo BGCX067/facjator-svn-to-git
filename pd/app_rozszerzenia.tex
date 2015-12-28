@@ -1,0 +1,237 @@
+\section{Rozbudowa aplikacji}
+Mając do dyspozycji kod źródłowy programu można bezproblemowo dodać obsługę
+nowych terminali i nieterminali. Jako przykład wykorzystana zostanie
+implementacja terminala Sphere, będąca reprezentacją sfery.
+Każdy nowy obiekt gramatyki musi dziedziczyć po klasie \emph{GrammarObject}
+i, w zależności od tego czy jest tworzony terminal (brak elementów podrzędnych)
+czy nieterminal (węzeł posiadający elementy podrzędne), implementować kilka
+wybranych metod:
+\begin{enumerate}
+  \item nieterminal: 
+  \begin{enumerate}
+    \item konstruktor, może przyjmować parametry, które trzeba będzie podać w
+    skrypcie gramatyki kształtu;
+    \item \emph{raytrace}, która sprawdzi wynik operatora dla wszystkich
+    podwęzłów;
+    \item \emph{clone()}, który utworzy kopię węzła.
+  \end{enumerate}
+  \item terminal: 
+  \begin{enumerate}
+    \item konstruktor, może przyjmować parametry, które trzeba będzie podać w
+    skrypcie gramatyki kształtu;
+    \item \emph{hit(vl::vec4\& p, vl::vec4\& v, set\& s)}, która zwróci flagę
+    oznaczającą czy element przecina promień (algorytm \emph{ray trace});
+    \item \emph{hit(vl::vec4\& p)}, kóra zwróci flagę oznaczającą czy punkt
+    spełnia warunek elementu np. czy znajduje się wewnątrz stożka (algorytm
+    przetwarzania wokseli);
+    \item \emph{clone()}, który utworzy kopię węzła.
+  \end{enumerate}
+\end{enumerate}
+
+Plik nagłowkowy:
+{
+\small
+\begin{lstlisting}[language=C++,numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+class Sphere : public GrammarObject { // tolua_export
+    public:
+    // tolua_begin
+        Sphere();
+        ~Sphere();
+    //tolua_end
+        virtual bool hit(vl::vec4& p, vl::vec4& v, set& s);
+        virtual bool hit(vl::vec4& p);
+        virtual Node::node_ptr clone();
+}; // tolua_export
+\end{lstlisting}
+}
+Implementacja metod:
+{
+\small
+\begin{lstlisting}[language=C++,numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+bool Sphere::hit(vl::vec4& p, vl::vec4& v, set& s)
+{
+    //wyznacza punkty przeciecia promienia ze sfera
+    //jezeli jest przeciecie to metoda zwraca true, wpp false
+    vl::vec3 v_tmp = v.xyz();
+    vl::vec3 p_tmp = p.xyz();
+    float a = vl::dot(v_tmp, v_tmp);
+    float b = vl::dot(v_tmp, p_tmp) * 2;
+    float c = vl::dot(p_tmp, p_tmp) - 1;
+    float d = b*b - 4*a*c;
+    if (d > 0)
+    {
+        float sq = sqrt(d);
+        float t1 = (-b-sq)/(2*a);
+        float t2 = (-b+sq)/(2*a);
+
+        vl::vec3 n1 = p_tmp + t1 * v_tmp;
+        n1.normalize();
+        vl::vec3 n2 = p_tmp + t2 * v_tmp;
+        n2.normalize();
+
+        if (t1 < t2)
+            s.add(t1, n1, t2, n2);
+        else
+            s.add(t2, n2, t1, n1);
+        return true;
+    }
+    return false;
+}
+
+bool Sphere::hit(vl::vec4& p)
+{
+    //zwraca true jezeli p znajduje sie wewnatrz sfery
+    return p.xyz().length() < 1;
+}
+
+Node::node_ptr Sphere::clone()
+{
+    node_ptr n(new Sphere);
+    GrammarObject::clone(n);
+    return n;
+}
+\end{lstlisting}
+}
+
+W przykładowym kodzie zaimplementowany jest element sfery. Odpowiednie metody
+\emph{hit} implementują obsługę algorytmu \emph{ray tace} oraz przetwarzania wokselowego.
+Aby klasa obiektu była dostępna z poziomu gramatyki, należy zgodnie z powyższym
+schematem, umieścić znaczniki rozumiane przez tolua++. Po przygotowaniu kodu
+klasy należy przetworzyć plik nagłówkowy programem tolua++.exe (dla systemów
+Windows). Zakładając, że plik nagłówkowy ma nazwę {\em sphere.hpp}, należy
+wykonać poniższą komendę:
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+tolua++ -o tolua_sphere.cpp -H tolua_sphere.hpp -n sphere sphere.hpp
+\end{lstlisting}
+}
+
+Spowoduje to utworzenie plików {\em tolua\_sphere.hpp} i {\em
+tolua\_sphere.cpp}, które zawierają kod udostępniający klasę {\em Sphere} do
+skryptów lua. Pliki trzeba dodać do projektu i skompilować. Po takich
+przygotowaniach można korzystać z utworzonej klasy w gramatyce kształtu:
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+local sfera = Sphere()
+\end{lstlisting}
+}
+
+W podobny sposób możemy dodać nieterminal. Jako przykład może posłużyć
+modyfikator \emph{And}.
+
+Plik nagłówkowy:
+
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+class And : public GrammarObject { // tolua_export
+    public:
+        And() {}
+    // tolua_begin
+        And(GrammarObject& t1, GrammarObject& t2);
+        And(GrammarObject& t1, GrammarObject& t2, GrammarObject& t3);
+        And(GrammarObject& t1, GrammarObject& t2, GrammarObject& t3, GrammarObject& t4);
+        And(GrammarObject& t1, GrammarObject& t2, GrammarObject& t3, GrammarObject& t4, 
+        GrammarObject& t5);
+        ~And();
+    //tolua_end
+        virtual bool rayTrace(vl::vec4& p, vl::vec4& v, set& s);
+        virtual bool rayTrace(vl::vec4& p);
+        virtual Node::node_ptr clone();
+}; // tolua_export
+\end{lstlisting}
+}
+
+Oraz implementacja:
+
+{
+\small
+\begin{lstlisting}[numbers=left,frame=single,numberstyle=\tiny,backgroundcolor=\color{code_back},breaklines=true]
+bool And::rayTrace(vl::vec4& p, vl::vec4& v, set& s)
+{
+    t_child_list::iterator i = childs.begin();
+    bool h;
+    set ss;
+    // przetransformuj punkt i promien kamery
+    vl::vec4 ppt = tmpMatrixInv * p;
+    vl::vec4 vvt = tmpMatrixInv * v;
+
+    // przekaz do wszystkich dzieci i sprawdz czy
+    // promien przeszedl przez obiekty
+    for (;i!=childs.end(); i++)
+    {
+        vl::vec4 pp = ppt;
+        vl::vec4 vv = vvt;
+
+        if (i == childs.begin())
+        {
+            h  = dynamic_cast<GrammarObject*>(*i)->rayTrace(pp, vv, ss);
+        }
+        else
+        {
+            set sss;
+            h &= dynamic_cast<GrammarObject*>(*i)->rayTrace(pp, vv, sss);
+            // operacja AND na zbiorze odcinkow
+            ss *= sss;
+        }
+    }
+
+    // zwroc true jesli zbior nie jest pusty
+    if (h)
+    {
+        s = ss;
+        return true;
+    }
+
+    return false;
+}
+
+bool And::rayTrace(vl::vec4& p)
+{
+    t_child_list::iterator i = childs.begin();
+    bool h;
+    // przemnoz punkt przez lokalna macierz
+    vl::vec4 ppt = tmpMatrixInv * p;
+
+    // przekaz nowa pozycje do wszystkich dzieci
+    for (;i!=childs.end(); i++)
+    {
+        vl::vec4 pp = ppt;
+
+        if (i == childs.begin())
+        {
+            h  = dynamic_cast<GrammarObject*>(*i)->rayTrace(pp);
+        }
+        else
+        {
+            h &= dynamic_cast<GrammarObject*>(*i)->rayTrace(pp);
+        }
+    }
+
+    // zwroc true jesli punkt jest aktywny we wszystkich dzieciach
+    return h;
+}
+
+Node::node_ptr And::clone()
+{
+    node_ptr n(new And);
+    // sklonuj samego siebie
+    GrammarObject::clone(n);
+
+    return n;
+}
+\end{lstlisting}
+}
+
+Jak widać powyżej zaimplementowane są metody \emph{rayTrace} i metoda
+\emph{clone}. Pierwsza metoda \emph{rayTrace} (używana przy renderingu metodą
+ray-tracing), wylicza nową pozycję kamery i kierunek wektora promienia na
+podstawie lokalnej macierzy nieterminala, a następnie przekazuje te parametry do
+każdego dziecka licząc część wspólną na zbiorach odcinków (linia 26). Na końcu
+jeśli zbiór odcinków nie jest pusty, zwraca \emph{true}. Analogicznie druga
+metoda \emph{rayTrace} przekształca pozycję w przestrzeni wokselowej na
+podstawie lokalnej macierzy i przekazuje ją do swoich dzieci, a następnie
+oblicza część wspólną dla każdego z dzieci i zwraca wynik. Ostatnia metoda
+\emph{clone} --- klonuje siebie samą i zwraca klona.

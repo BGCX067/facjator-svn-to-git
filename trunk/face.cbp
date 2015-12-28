@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="face" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/face" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/face" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-s" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="`fltk-config --cxxflags`" />
+			<Add option="-I/usr/include/fltk-1.1" />
+		</Compiler>
+		<Linker>
+			<Add option="`fltk-config --ldstaticflags`" />
+			<Add option="-L/usr/lib/fltk-1.1" />
+			<Add library="fltk" />
+			<Add library="fltk_gl" />
+			<Add library="GL" />
+			<Add library="fltk_images" />
+			<Add library="VisualizationLibrary" />
+			<Add library="GLU" />
+			<Add library="FreeType" />
+			<Add library="TIFF" />
+			<Add library="tolua++" />
+			<Add library="lua" />
+		</Linker>
+		<Unit filename="BaseDemo.hpp" />
+		<Unit filename="Project.cpp" />
+		<Unit filename="Project.hpp" />
+		<Unit filename="Windows.cpp" />
+		<Unit filename="Windows.hpp" />
+		<Unit filename="face.cpp" />
+		<Unit filename="face.h" />
+		<Unit filename="grammar/ActionLog.cpp" />
+		<Unit filename="grammar/ActionLog.hpp" />
+		<Unit filename="grammar/Grammar.cpp" />
+		<Unit filename="grammar/Grammar.hpp" />
+		<Unit filename="grammar/GrammarOutput.cpp" />
+		<Unit filename="grammar/GrammarOutput.hpp" />
+		<Unit filename="grammar/GrammarParam.cpp" />
+		<Unit filename="grammar/GrammarParam.hpp" />
+		<Unit filename="grammar/IGrammarEventListener.hpp" />
+		<Unit filename="grammar/LuaScript.cpp" />
+		<Unit filename="grammar/LuaScript.hpp" />
+		<Unit filename="grammar/Operation.cpp" />
+		<Unit filename="grammar/Operation.hpp" />
+		<Unit filename="grammar/Script.cpp" />
+		<Unit filename="grammar/Script.hpp" />
+		<Unit filename="grammar/terminal.cpp" />
+		<Unit filename="grammar/terminal.hpp" />
+		<Unit filename="grammar/tolua_operation.cpp" />
+		<Unit filename="grammar/tolua_operation.hpp" />
+		<Unit filename="grammar/tolua_terminal.cpp" />
+		<Unit filename="grammar/tolua_terminal.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="math/tolua_vector.cpp" />
+		<Unit filename="math/tolua_vector.hpp" />
+		<Unit filename="math/vector.cpp" />
+		<Unit filename="math/vector.hpp" />
+		<Unit filename="mcube.hpp" />
+		<Unit filename="ui/FLTKWindow.cpp" />
+		<Unit filename="ui/FLTKWindow.hpp" />
+		<Unit filename="ui/ceditparam.cpp" />
+		<Unit filename="ui/ceditparam.h" />
+		<Unit filename="ui/cmap.cpp" />
+		<Unit filename="ui/cmap.h" />
+		<Unit filename="ui/cmenu.cpp" />
+		<Unit filename="ui/cmenu.h" />
+		<Unit filename="ui/cparams.cpp" />
+		<Unit filename="ui/cparams.h" />
+		<Unit filename="ui/cpic.cpp" />
+		<Unit filename="ui/cpic.h" />
+		<Unit filename="ui/ctext.cpp" />
+		<Unit filename="ui/ctext.h" />
+		<Unit filename="ui/window.cpp" />
+		<Unit filename="ui/window.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

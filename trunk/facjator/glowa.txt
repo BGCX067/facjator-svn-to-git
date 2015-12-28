@@ -1,0 +1,239 @@
+function eye_hole()
+  local tmp = Cylinder();
+  tmp:translate(-0.1, -0.1, 1.02);
+  tmp:scale(1, 0.45, 0.45);
+  tmp:rotate(0, -0.2, 0);
+  tmp:rotate(0, 0, 3.14/2.0);
+
+  return tmp;
+end
+
+function eye()
+  local tmp1 = Sphere();
+  local tmp2 = Sphere();
+  local tmp3 = Sphere();
+  local tmp4 = Sphere();
+  local tmp5 = Sphere();
+  
+  tmp1:scale(.95,.95,.95);
+  tmp2:scale(0.9,0.9,0.9);
+  tmp3:scale(0.8,0.8,0.8);
+  tmp3:translate(0,0.6,0.8);
+  tmp4:scale(0.9, 0.9, 0.9);
+  tmp5:scale(0.5, 0.5, 0.5);
+  tmp5:translate(0, 0, 0.92);
+  
+  local eyelid1 = Diff(tmp1, tmp2, tmp3);
+  local eyelid2 = Mirror(eyelid1, 1);
+  
+  local eye = Or(eyelid1, eyelid2, tmp4, tmp5);
+  
+  return eye;
+end
+
+
+function ear()
+  local tmp = Sphere();
+  tmp:translate(-0.58, 0.04, -0.12);
+  tmp:scale(0.08, 0.20, 0.14);
+  return tmp;
+end
+
+function neck()
+  local tmp = Cylinder();
+  tmp:translate(0, -0.7, 0);
+  tmp:scale(0.50, 0.7, 0.39);
+  tmp:rotate(0.63, 0, 0);
+  tmp:translate(0, 0, -0.34);
+  return tmp;
+end
+
+function nose(s, t1, t2, t3)
+  local bone = Sphere();
+  bone:scale(s, s, s);
+  bone:translate(t1, t2, t3);
+  bone:rotate(-0.3, 0, 0);
+  bone:scale(0.5, 0.8, 0.5);
+  bone:translate(0, 0.2, 0);
+
+  -- czubek
+  local tip = Sphere();
+  tip:scale(s, s, s);
+  tip:translate(t1, t2, t3);
+  tip:scale(0.45, 0.45, 0.45);
+  tip:translate(0, -0.4, 0.25);
+
+  local side1 = Sphere();
+  side1:scale(s, s, s);
+  side1:translate(t1, t2, t3);
+  side1:scale(0.4, 0.4, 0.4);
+  side1:translate(-0.5, -0.45, -0.05);
+
+  local side2 = Sphere();
+  side2:scale(s, s, s);
+  side2:translate(t1, t2, t3);
+  side2:scale(0.4, 0.4, 0.4);
+  side2:translate(0.5, -0.45, -0.05);
+
+  local side = Or(side1, side2);
+
+  -- dziurki
+  local hole1 = Sphere();
+  hole1:scale(s, s, s);
+  hole1:translate(t1, t2, t3);
+  hole1:scale(0.2, 0.2, 0.2);
+  hole1:translate(-1, -2.4, -0.1);
+
+  local hole2 = Sphere();
+  hole2:scale(s, s, s);
+  hole2:translate(t1, t2, t3);
+  hole2:scale(0.2, 0.2, 0.2);
+  hole2:translate(1, -2.4, -0.1);
+
+  local holes = Or(hole1, hole2);
+  local _nose = Or(bone, tip, side);
+        _nose = Diff(_nose, holes);
+  
+  return _nose;
+end
+
+function mouth(s, t1, t2, t3)
+  local tmp1 = Sphere();
+  local tmp2 = Sphere();
+  local tmp3 = Sphere();
+  local tmp4 = Sphere();
+  local tmp5 = Sphere();
+  local tmp6 = Sphere();
+  
+  tmp1:scale(s, s, s);
+  tmp1:translate(t1, t2, t3);
+  tmp2:scale(s, s, s);
+  tmp2:translate(t1, t2, t3);
+  tmp3:scale(s, s, s);
+  tmp3:translate(t1, t2, t3);
+  tmp4:scale(s, s, s);
+  tmp4:translate(t1, t2, t3);
+  tmp5:scale(s, s, s);
+  tmp5:translate(t1, t2, t3);
+  tmp6:scale(s, s, s);
+  tmp6:translate(t1, t2, t3);
+  
+  tmp1:scale(1.2, 1, 1);
+  tmp1:translate(0, .5, 0);
+  tmp2:scale(2.5, 2, 2.5);
+  tmp2:translate(0, -1, 0);
+  tmp3:scale(1, 0.5, 1);
+  tmp3:translate(0, -.55, -.15);
+  tmp5:scale(0.8, 0.8, 0.8);
+  tmp5:translate(0.4, 0, 0);
+  tmp6:scale(0.8, 0.8, 0.8);
+  tmp6:translate(-0.4, 0, 0);
+  
+  local tmp7 = Diff(tmp4, tmp5, tmp6);
+  tmp7:translate(0,-0.42, 0);
+  
+  local tmp8 = And(tmp1, tmp2, tmp3);
+  tmp8:scale(1, 1, .5);
+  tmp8:translate(0, 0.1, 0);
+  
+  local tmp9 = Mirror(tmp8, 1);
+  tmp9:scale(1, 1.05, 1);
+  
+  local tmp10 = Or(tmp8, tmp9);
+  local _mouth = Diff(tmp10, tmp7);
+  
+  return _mouth;
+end
+
+function head_structure()
+  local s_czaszka = Sphere();
+  s_czaszka:translate(0, 0.29, -0.078);
+  s_czaszka:scale(0.57, 0.57, 0.7);
+  
+  local s_przod = Cylinder();
+  s_przod:translate(0, -0.01, 0.1);
+  s_przod:scale(0.535, 0.77, 0.54);
+  s_przod:rotate(3.14/2.0, 0, 0);
+
+  local tyl_sciecie = Sphere();
+  tyl_sciecie:translate(0, 0.2, 0.15);
+  tyl_sciecie:scale(0.59, 1.0, 0.87);
+
+  local tyl_wypelnienie = Sphere();
+  tyl_wypelnienie:translate(0, 0.08, 0);
+  tyl_wypelnienie:scale(0.58, 0.87, 0.78);
+
+  s_przod = And(s_przod, tyl_sciecie);
+  s_przod = Or(s_przod, tyl_wypelnienie);
+
+  local s_przod_zaokr = Sphere();
+  s_przod_zaokr:translate(0, -0.1, -0.08);
+  s_przod_zaokr:scale(0.66, 1.35, 0.7);
+
+  local s_przod_zaokr1 = Sphere();
+  s_przod_zaokr1:translate(0, -0.1, -0.44);
+  s_przod_zaokr1:scale(0.62, 1.41, 1.2);
+
+  local s_przod_zaokr_gora = Sphere();
+  s_przod_zaokr_gora:translate(0, -0.1, 0.0);
+  s_przod_zaokr_gora:scale(0.95, 0.81, 0.84);
+
+  local s_przod_cut = Cylinder();
+  s_przod_cut:translate(0, 0.3, 0.2);
+  s_przod_cut:scale(1, 0.45, 0.45);
+
+  local s_przod_all = And(s_przod, s_przod_zaokr, s_przod_zaokr1, s_przod_zaokr_gora);
+  --s_przod_all = Diff(s_przod_all, s_przod_cut);
+
+  -- uszy
+  local ear_l = ear();
+  local ear_r = Mirror(ear_l, 0);
+  local dziura_l = eye_hole();
+  local dziura_r = Mirror(dziura_l, 0);
+
+  -- oczy
+  local eye_l = eye();
+  eye_l:translate(-1.5, 0.3, 3.2);
+  eye_l:scale(0.15,0.15,0.15);
+  local eye_socket_l = Sphere();
+  --eye_socket_l:translate(-1.5, 0.3, 3.2);
+  eye_socket_l:scale(0.15,0.15,0.15);
+  local eye_r = eye();
+  eye_r:translate(1.5, 0.3, 3.2);
+  eye_r:scale(0.15,0.15,0.15);
+  local eye_both = Or(eye_l, eye_r);
+
+  -- nos
+  local nose = nose(0.15, 0, -0.7, 4.2);
+  
+  --usta
+  local mouth = mouth(0.15, 0, -1.5, 4.2);
+
+  -- cala glowa
+  local c_glowa_zaokr = Cylinder();
+  c_glowa_zaokr:translate(0, 0.3, 0);
+  c_glowa_zaokr:scale(0.56, 1.24, 1.3);
+
+  local n_out = Or(s_czaszka, s_przod_all);
+  n_out = And(n_out, c_glowa_zaokr);
+  --n_out = Or(n_out, ear_l, ear_r);
+  local n_out1 = Diff(n_out, eye_socket_l);--dziura_l, dziura_r);
+  local n_out2 = Or(n_out1, neck());--, back(), neck(), nose, eye);
+
+  return n_out2;
+end
+
+local head = head_structure();
+local sgsz = params:getParamFloat("Skala glowy, szerokosc");
+local sgw = params:getParamFloat("Skala glowy, wysokosc");
+local sgg = params:getParamFloat("Skala glowy, glebokos");
+head:scale(sgsz, sgw, sgg);
+
+--head:rotate(0, 0, 1.6);
+--head:translate(1, 0, 0);
+draw(head);
+
+/*EOS*/
+Skala glowy, szerokosc;2;1
+Skala glowy, wysokosc;2;1
+Skala glowy, glebokos;2;1

@@ -1,0 +1,186 @@
+% ------------------------------------------------------------------------
+% Nazwa:    Szkielet dokument 'typu praca dyplomowa'
+% źródło:   http://www.ee.pw.edu.pl/~szewczyk/
+% Data:     7 stycznia 2005
+% ------------------------------------------------------------------------
+
+%\documentclass[12pt,notitlepage,oneside]{book}
+\documentclass[12pt,oneside]{article}
+
+    \input{preamble/preambula_pakiety.tex}
+    \input{preamble/preambula_ustawienia.tex}
+
+    \title{INTELIGENTNY SYNTETYZATOR TWARZY LUDZKIEJ NA PODSTAWIE SZKICÓW
+    PROFILI}
+    \author{Tomasz Flis\\Dominik Kornaus}
+
+    %polecenia zdefiniowane w pakiecie strona_tytulowa.sty
+    \academy{Akademia Gorniczo-Hutnicza w~Krakowie}
+    \institute{Wydzial Elektrotechniki, Automatyki, Informatyki i Elektroniki}
+    \specialization{INFORMATYKA}
+    \speciality{Systemy komputerowe}
+    \promoter{dr inż. T. Szuba; prof. nzw. AGH}
+    \project{PRACA MAGISTERSKA}
+    \city{Krakow}
+    \year{2011}
+    %\draft  %odkomentarzuj tę linię, jeśli wydruk ma być draftem -- wprowadza informację o drafcie na stronie tytułowej
+    %koniec poleceń zdefiniowanych przez pakiet strona_tytulowa.sty
+
+    %skorowidz - nie używam
+    %\makeindex
+    %koniec skorowidza
+
+\begin{document}
+    \renewcommand{\figurename}{\bf Ilustracja}    %musi byc pod \begin{document}, bo w~tym miejscu pakiet 'babel' narzuca swoje ustawienia
+    \renewcommand{\tablename}{Tab.}     %j.w.
+    %jeśli numerki rzymskie to roman
+    \pagenumbering{arabic}               %numeracja stron: rzymska
+    \pagestyle{fancy}
+    \thispagestyle{empty}               %na tej stronie: brak numeru
+    \titlepage                     %strona tytułowa tworzona przez pakiet strona_tytulowa.tex
+
+    %podziękowania
+    \newpage
+    ~   %potrzebne dla \vfill
+    \vfill
+    {\sffamily
+    \begin{flushright}
+        \begin{tabular}[c]{p{9cm}}
+        \centering
+        \noindent
+         Pragniemy złożyć najserdeczniejsze podziękowania dla:
+         
+         Pana dr inż. Marka Gajęckiego, Kierownika Katedry Informatyki, za
+         możliwość realizacji niniejszej pracy
+         
+         oraz
+         
+%         Składamy serdeczne podziękowania 
+         Pana dr inż. Tadeusza Szuby za niezwykłą
+         cierpliwość, cenne uwagi i wskazówki udzielone
+         nam w trakcie pisania tej pracy magisterskiej.
+        \end{tabular}
+    \end{flushright}
+    }
+    \vskip0.5in
+    \thispagestyle{empty}
+    \newpage
+    %koniec podziękowań
+
+    \thispagestyle{empty}
+    %formatowanie spisu treści i~nagłówków
+    %jeśli chcemy numerki rzymski to roman
+    \renewcommand{\thepage}{\arabic{page}}
+    \renewcommand{\cftbeforesecskip}{8pt}
+    \renewcommand{\cftsecafterpnum}{\vskip 8pt}
+    \renewcommand{\cftparskip}{3pt}
+    \renewcommand{\cfttoctitlefont}{\Large\bfseries\sffamily}
+    \renewcommand{\cftsecfont}{\bfseries\sffamily}
+    \renewcommand{\cftsubsecfont}{\sffamily}
+    \renewcommand{\cftsubsubsecfont}{\sffamily}
+    \renewcommand{\cftparafont}{\sffamily}
+    %koniec formatowania spisu treści i nagłówków
+	\hypersetup{linkcolor=black}
+    \begin{spacing}{0.8}
+    \tableofcontents    %spis treści
+    \end{spacing}
+    \newpage
+
+	\thispagestyle{empty}
+    \input{wykaz_skrotow.tex}
+    \newpage
+
+    %spis rysunków i~tablic
+    %format spisu treści dotyczy tylko tych spisów, które są poniżej
+%    \renewcommand{\cftparskip}{3pt}
+%    \clearpage
+%    \renewcommand{\cftloftitlefont}{\Large\bfseries\sffamily}
+%    \listoffigures
+%    \addcontentsline{toc}{section}{Spis rysunków}
+%    \newpage
+%    \renewcommand{\cftlottitlefont}{\Large\bfseries\sffamily}
+%    \listoftables
+%    \addcontentsline{toc}{section}{Spis tablic}
+%    \newpage
+    %powrót do czerwonego koloru dla dalszych odnośników (spis literatury, przy włączonym pokazywaniu numerów stron, do których odnoszą się poszczególne pozycje)
+%    \hypersetup{linkcolor=red}
+    %koniec spisu rysunków i~tablic
+
+    %przeniesienie wartości licznika stron na strony numerowane innym stylem (arabic)
+    \newcounter{licznikStron}
+    \setcounter{licznikStron}{\value{page}}
+    \pagenumbering{arabic}
+    \setcounter{page}{\value{licznikStron}}
+    %koniec przeniesienia...
+
+    %treść główna dokumentu
+    \input{abstract.tex}
+    \newpage
+    \input{wstep.tex}
+    \newpage
+    \input{roz1.tex}
+    \newpage
+    \input{roz2.tex}
+    \newpage
+    \input{roz3.tex}
+    \newpage
+    \input{roz4.tex}
+    \newpage
+    \input{roz5.tex}
+    \newpage
+    \input{roz6.tex}
+    \newpage
+    \input{roz7.tex}
+    \appendix
+    \newpage
+    \input{app_rozszerzenia.tex}
+    \newpage
+    \input{app_lua.tex}
+    \newpage
+    \input{app_cd.tex}
+%------------------------------------------------------------------------------
+
+    \newpage
+    %koniec treści głównej dokumentu
+
+    %bibliografia
+    %GATHER{bibliografia.bib}                       %polecenie programu WinEdt, włącza plik do drzewa 'projektu'
+    \bibliographystyle{unsrtnat}                    %styl bibliografii: w kolejno�ci cytowania, zrozumia�y dla pakietu hyperref.sty  
+	\bibliographystyle{prsty}
+    \addcontentsline{toc}{section}{Literatura}      %musi być wyżej niż \bibliography{bibliografia}, żeby w~spisie treści był właściwy numer strony
+    \bibliography{bibliografia}
+%	\subsection*{Pozycje niecytowane w pracy, związane z tekstem}
+%	\begin{tabular}{@{}l l@{}}
+%     [100] & Microsoft, Plik {\em Microsoft Visual Studio
+%     8/vc/PlatformSDK/Include/WinNT.h.}\\
+%    \end{tabular}\\[0.35cm]
+%	\begin{tabular}{@{}l l@{}}	
+%     [101] & GNU, Plik {\em /usr/include/elf.h.}\\
+%    \end{tabular}
+    
+    %koniec bibliografii
+
+	\newpage
+	\listoffigures
+
+    %załączniki
+%    \newpage
+%    \appendix
+%    \renewcommand{\appendixtocname}{Załączniki}
+%    \renewcommand{\appendixpagename}{~\vspace{8cm} \begin{center}Załączniki\end{center}\newpage}
+%    \thispagestyle{empty}
+%    \addappheadtotoc
+%    \appendixpage
+%    \input{zalacznik.tex}
+    %koniec załączników
+
+    %skorowidz - nie używam
+%    \index{Napis}
+%    \index{Napis!Podnapis}
+%    \printindex
+    %koniec skorowidza
+
+    %lista rzeczy do zrobienia: wypisuje na końcu dokumentu, patrz: pakiet todo.sty
+%    \todos
+    %koniec listy rzeczy do zrobienia
+\end{document}

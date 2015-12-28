@@ -1,0 +1,100 @@
+% title page
+
+\def\academy#1{\gdef\@academy{#1}}
+\def\institute#1{\gdef\@institute{#1}}
+\def\specialization#1{\gdef\@specialization{#1}}
+\def\speciality#1{\gdef\@speciality{#1}}
+\def\city#1{\gdef\@city{#1}}
+\def\year#1{\gdef\@year{#1}}
+\def\promoter#1{\gdef\@promoter{#1}}
+\def\project#1{\gdef\@project{#1}}
+
+% boolean varying type true/false   default
+\newif\ifdraft@mode             \draft@modefalse
+
+\def\draft{
+    \draft@modetrue
+}
+
+\def\titlepage{
+
+    \newcommand*{\tmpthesisDraftKomunikat}{
+        \begin{array}{c}
+            \\
+            \mbox{\Large UWAGA -- TO JEST DRAFT}\\
+            \\
+            \mbox{\large Wydruk z \today}\\
+            \\
+        \end{array}
+    }
+
+    \vskip0.25in
+    % zrobic ten cholerny odstep!!
+    \begin{center}
+        \hyphenpenalty=10000\Large\expandafter{\@academy}%\\
+        \vskip0.25in
+		\includegraphics[width=2.5cm]{images/agh.png}
+    \end{center}
+
+	\vskip0.5in
+
+    \begin{center}
+        \large\@institute
+    \end{center}
+
+	\vskip0.75in
+
+	\begin{center}
+    	\begin{large}
+	    	Kierunek:
+    		\hyphenpenalty=10000\sffamily\expandafter\@specialization
+    	\end{large}
+    \end{center}
+
+	\begin{center}
+    	\begin{large}
+	    	Specjalność:
+    		\hyphenpenalty=10000\sffamily\expandafter\@speciality
+    	\end{large}
+    \end{center}
+
+	\vskip0.7in
+
+	\begin{center}
+    	\begin{large}
+	   		\hyphenpenalty=10000\sffamily\expandafter\@project
+    	\end{large}
+    \end{center}
+
+    \vskip0.7in
+
+    \begin{center}
+    	Tytuł pracy: \\
+        \hyphenpenalty=10000\Large\sffamily\expandafter{\textbf{\@title}}
+    \end{center}
+    \vskip0.4in
+
+    \ifdraft@mode
+      \begin{center}\framebox{$\tmpthesisDraftKomunikat$}\end{center}
+    \fi
+
+    \vskip0.4in
+
+	\begin{tabular}{c}
+		Autorzy:\\
+		\@author \\
+	\end{tabular}
+	\hfill
+	\begin{tabular}{c}
+		Opiekun pracy:\\
+		\@promoter \\
+	\end{tabular}
+
+    \vfill
+
+    \begin{center}
+        \rm \@city, \@year
+    \end{center}
+    \newpage
+
+}

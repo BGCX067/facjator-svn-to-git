@@ -1,0 +1,59 @@
+local kubek = Cylinder();
+kubek:scale(0.5, 0.5, 0.5);
+
+local gParam = params:getParamFloat("glebokosc");
+local kubekWypel = Cylinder();
+kubekWypel:scale(0.45, 0.5, 0.45);
+kubekWypel:translate(0, 1.05 - gParam, 0);
+
+local caly = Diff(kubek, kubekWypel);
+
+local zaokrParam = params:getParamFloat("zaokraglenie") / 5.0;
+if zaokrParam > 0.2 then
+  zaokrParam = 0.2;
+end
+zaokrParam = 1 - zaokrParam;
+local zaokr = Sphere();
+zaokr:scale(zaokrParam, zaokrParam, zaokrParam);
+zaokr:translate(0, 0.3, 0);
+caly = And(caly, zaokr);
+
+local u1 = Sphere();
+u1:scale(0.5, 0.5, 0.5);
+local u2 = Sphere();
+u2:scale(0.4, 0.4, 0.4);
+local uchwyt = Diff(u1, u2);
+
+local ruParam = params:getParamFloat("rozmiar uchwytu");
+uchwyt:scale(ruParam, ruParam, ruParam);
+
+local uchwytCut = Cube();
+uchwytCut:scale(1, 1, 0.05);
+uchwytCut:translate(1, 0, 0);
+uchwyt = And(uchwyt, uchwytCut);
+uchwyt:translate(0.5, 0, 0);
+
+local mod = PlaneProp(uchwyt, 1.0, 0.1);
+mod:p_rotateDeg(0, 0, 135);
+mod:p_translate(1, -0.5, 0);
+
+--caly = Or(uchwyt, caly);
+caly = Or(mod, caly);
+
+local pParam = params:getParamInt("podglad");
+if pParam > 0 then
+  local widok = Plane();
+  widok:rotateDeg(0, -90, 0);
+  caly = And(caly, widok);
+end
+
+draw(caly);
+
+
+
+
+/*EOS*/
+glebokosc;2;1
+rozmiar uchwytu;2;0.8
+podglad;1;0
+zaokraglenie;2;0
